@@ -1,0 +1,197 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  user-select: none;
+}
+
+body {
+  min-height: 100dvh;
+  display: grid;
+  place-content: center;
+
+  .container-phone {
+    width: 320px;
+    height: 640px;
+    background: url('fotos/iphone.webp') no-repeat;
+    background-size: contain;
+    
+
+    .content-phone {
+      width: 85.5%;
+      height: 92.3%;
+      border-radius: 34.5px;
+      background-color: transparent;
+      position: relative;
+      top: 23px;
+      left: 23px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      .container-logo {
+        height: 3rem;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        padding-left: 1rem;
+
+        .logo {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      .cards {
+        flex-grow: 1;
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        cursor: grab;
+        overflow: hidden;
+
+        .card {
+          transition: rotate .3s ease, translate .3s ease;
+
+          &.go-right {
+            transform: translateX(160%) rotate(28deg) !important;
+          }
+
+          &.go-left {
+            transform: translateX(-160%) rotate(-28deg) !important;
+          }
+
+          &.reset {
+            transform: translateX(0) !important;
+          }
+        }
+
+        .card,
+        h2,
+        img {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+        }
+
+        div.message {
+          width: 100%;
+          height: 100%;
+          align-content: center;
+          background-color: transparent;
+          padding: 3rem;
+          text-wrap: balance;
+          text-align: center;
+        }
+
+        img {
+          object-fit: cover;
+        }
+
+        h2 {
+          color: #fff;
+          padding: 1rem;
+          align-content: end;
+          -webkit-text-fill-color: #fff;
+          -webkit-text-stroke-color: black;
+          -webkit-text-stroke-width: 1px;
+          font-style: italic;
+        }
+
+        .choice {
+          position: absolute;
+          padding: .5rem 1rem;
+          top: 2rem;
+          border-radius: 20px;
+          border: 4px solid currentColor;
+          font-weight: 800;
+          opacity: 0;
+          transition: .3s ease;
+
+          &.nope {
+            right: 1rem;
+            transform: rotate(25deg);
+            color: orangered;
+          }
+
+          &.like {
+            left: 1rem;
+            transform: rotate(-25deg);
+            color: springgreen;
+          }
+        }
+      }
+
+      .container-buttons {
+        height: 3rem;
+        display: grid;
+        grid-template-columns: repeat(5, auto);
+        align-content: center;
+        justify-content: center;
+        column-gap: 1rem;
+
+        & button {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          border: none;
+          outline: none;
+          background-image: url('fotos/tinder-icons.webp');
+          background-size: calc(1809px / 6);
+          background-repeat: no-repeat;
+          transition: .3s ease;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        & .btn-1 {
+          background-position: -12px -11px
+        }
+
+        & .btn-2 {
+          background-position: -73px -12px;
+          transform: scale(.85);
+        }
+
+        & .btn-3 {
+          background-position: -135px -12px;
+        }
+
+        & .btn-4 {
+          background-position: -196px -11px;
+        }
+
+        & .btn-5 {
+          background-position: -257px -12px;
+          transform: scale(.85);
+        }
+      }
+    }
+  }
+
+  .vertical-position {
+    display: none;
+  }
+}
+
+@media (width <=1200px) and (orientation: landscape) {
+  body {
+    .container-phone {
+      display: none;
+    }
+
+    .vertical-position {
+      display: block;
+      width: 5rem;
+      height: 5rem;
+      object-position: center;
+      object-fit: contain;
+    }
+  }
+}
