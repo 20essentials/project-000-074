@@ -3,21 +3,21 @@ let isAnimated = false;
 const DISTANCE_LIMIT = 70;
 const d = document;
 
-console.log("Inspiration", "https://www.javascript100.dev/01-tinder-swipe");
+console.log('Inspiration', 'https://www.javascript100.dev/01-tinder-swipe');
 
-d.addEventListener("mousedown", dragStart);
-d.addEventListener("touchstart", dragStart, { passive: true });
+d.addEventListener('mousedown', dragStart);
+d.addEventListener('touchstart', dragStart, { passive: true });
 
 function dragStart(event) {
   if (isAnimated) return;
-  const currentCard = event.target.closest(".card");
+  const currentCard = event.target.closest('.card');
   if (!currentCard) return;
   const startX = event.pageX ?? event.touches[0].pageX;
 
-  d.addEventListener("mousemove", onMoveCard);
-  d.addEventListener("mouseup", onEndDragCard);
-  d.addEventListener("touchmove", onMoveCard, { passive: true });
-  d.addEventListener("touchend", onEndDragCard, { passive: true });
+  d.addEventListener('mousemove', onMoveCard);
+  d.addEventListener('mouseup', onEndDragCard);
+  d.addEventListener('touchmove', onMoveCard, { passive: true });
+  d.addEventListener('touchend', onEndDragCard, { passive: true });
 
   function onMoveCard(event) {
     const currentX = event.pageX ?? event.touches[0].pageX;
@@ -32,37 +32,43 @@ function dragStart(event) {
     const opacity = Math.abs(distanceX) / 100;
     const goRight = distanceX > 0;
     const choiceEl = goRight
-      ? currentCard.querySelector(".choice.like")
-      : currentCard.querySelector(".choice.nope");
+      ? currentCard.querySelector('.choice.like')
+      : currentCard.querySelector('.choice.nope');
     choiceEl.style.opacity = opacity;
   }
 
   function onEndDragCard(event) {
-    d.removeEventListener("mousemove", onMoveCard);
-    d.removeEventListener("mouseup", onEndDragCard);
-    d.removeEventListener("touchmove", onMoveCard);
-    d.removeEventListener("touchend", onEndDragCard);
+    d.removeEventListener('mousemove', onMoveCard);
+    d.removeEventListener('mouseup', onEndDragCard);
+    d.removeEventListener('touchmove', onMoveCard);
+    d.removeEventListener('touchend', onEndDragCard);
 
     let tookDecision = Math.abs(distanceX) >= DISTANCE_LIMIT;
 
     if (tookDecision) {
       let goRight = distanceX > 0;
-      currentCard.classList.add(goRight ? "go-right" : "go-left");
-      d.addEventListener("transitionend", () => {
+      currentCard.classList.add(goRight ? 'go-right' : 'go-left');
+      d.addEventListener('transitionend', () => {
         currentCard.remove();
       });
     } else {
-      currentCard.classList.add("reset");
-      currentCard.classList.remove("go-right", "go-left");
+      currentCard.classList.add('reset');
+      currentCard.classList.remove('go-right', 'go-left');
     }
 
-    d.addEventListener("transitionend", () => {
-      currentCard.removeAttribute("style");
-      currentCard.classList.remove("reset");
+    d.addEventListener('transitionend', () => {
+      currentCard.removeAttribute('style');
+      currentCard.classList.remove('reset');
       distanceX = 0;
       isAnimated = false;
     });
 
-    d.querySelectorAll(".choice").forEach((el) => (el.style.opacity = 0));
+    d.querySelectorAll('.choice').forEach(el => (el.style.opacity = 0));
   }
 }
+
+document.addEventListener('click', e => {
+  if (e.target.matches('.btn-5')) {
+    window.location.reload();
+  }
+});

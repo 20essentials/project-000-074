@@ -4,13 +4,15 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
   user-select: none;
 }
 
 body {
   min-height: 100dvh;
   display: grid;
+  background-color: #fff;
   place-content: center;
 
   .container-phone {
@@ -18,7 +20,6 @@ body {
     height: 640px;
     background: url('fotos/iphone.webp') no-repeat;
     background-size: contain;
-    
 
     .content-phone {
       width: 85.5%;
@@ -55,7 +56,7 @@ body {
         overflow: hidden;
 
         .card {
-          transition: rotate .3s ease, translate .3s ease;
+          transition: rotate 0.3s ease, translate 0.3s ease;
 
           &.go-right {
             transform: translateX(160%) rotate(28deg) !important;
@@ -104,13 +105,13 @@ body {
 
         .choice {
           position: absolute;
-          padding: .5rem 1rem;
+          padding: 0.5rem 1rem;
           top: 2rem;
           border-radius: 20px;
           border: 4px solid currentColor;
           font-weight: 800;
           opacity: 0;
-          transition: .3s ease;
+          transition: 0.3s ease;
 
           &.nope {
             right: 1rem;
@@ -143,7 +144,7 @@ body {
           background-image: url('fotos/tinder-icons.webp');
           background-size: calc(1809px / 6);
           background-repeat: no-repeat;
-          transition: .3s ease;
+          transition: 0.3s ease;
 
           &:hover {
             transform: scale(1.1);
@@ -151,12 +152,12 @@ body {
         }
 
         & .btn-1 {
-          background-position: -12px -11px
+          background-position: -12px -11px;
         }
 
         & .btn-2 {
           background-position: -73px -12px;
-          transform: scale(.85);
+          transform: scale(0.85);
         }
 
         & .btn-3 {
@@ -169,7 +170,7 @@ body {
 
         & .btn-5 {
           background-position: -257px -12px;
-          transform: scale(.85);
+          transform: scale(0.85);
         }
       }
     }
@@ -177,21 +178,5 @@ body {
 
   .vertical-position {
     display: none;
-  }
-}
-
-@media (width <=1200px) and (orientation: landscape) {
-  body {
-    .container-phone {
-      display: none;
-    }
-
-    .vertical-position {
-      display: block;
-      width: 5rem;
-      height: 5rem;
-      object-position: center;
-      object-fit: contain;
-    }
   }
 }
