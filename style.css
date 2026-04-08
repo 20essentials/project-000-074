@@ -32,6 +32,10 @@ body {
     background: url('fotos/iphone.webp') no-repeat;
     background-size: contain;
 
+    @media (width <= 1111px) and (orientation: portrait) {
+      zoom: 0.85;
+    }
+
     .content-phone {
       width: 85.5%;
       height: 92.3%;
